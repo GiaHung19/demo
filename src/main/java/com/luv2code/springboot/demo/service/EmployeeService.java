@@ -1,11 +1,11 @@
 package com.luv2code.springboot.demo.service;
 import java.util.*;
 
-import com.luv2code.springboot.demo.dto.EmployeeResponseDTO;
+import com.luv2code.springboot.demo.dto.*;
 
 public interface EmployeeService {
     List<EmployeeResponseDTO> findAll();
     EmployeeResponseDTO findById(int id);
-    EmployeeResponseDTO save(EmployeeResponseDTO employeeRequestDTO);
+    EmployeeResponseDTO save(EmployeeRequestDTO employeeRequestDTO);
     void deleteById(int id);
 }

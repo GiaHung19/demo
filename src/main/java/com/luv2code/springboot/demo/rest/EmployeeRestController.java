@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.luv2code.springboot.demo.dto.EmployeeRequestDTO;
 import com.luv2code.springboot.demo.dto.EmployeeResponseDTO;
-import com.luv2code.springboot.demo.entity.*;
 import com.luv2code.springboot.demo.service.EmployeeService;
 import java.util.*;
 
