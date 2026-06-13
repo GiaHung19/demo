@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.luv2code.springboot.demo.dto.EmployeeRequestDTO;
 import com.luv2code.springboot.demo.dto.EmployeeResponseDTO;
 import com.luv2code.springboot.demo.entity.*;
 import com.luv2code.springboot.demo.service.EmployeeService;
@@ -26,20 +27,19 @@ public class EmployeeRestController {
         return employeeService.findAll();
     }
     @PostMapping("/employees")
-    Employee creatEmployee(@RequestBody Employee employee){
-        employee.setId(0);
-        return employeeService.save(employee);
+    EmployeeResponseDTO creatEmployee(@RequestBody EmployeeRequestDTO employeeRequestDTO){
+        return employeeService.save(employeeRequestDTO);
     }
     @PutMapping("/employees")
-    Employee updateEmployee(@RequestBody Employee employee){
-        return employeeService.save(employee);
+    EmployeeResponseDTO updateEmployee(@RequestBody EmployeeRequestDTO employeeRequestDTO){
+        return employeeService.save(employeeRequestDTO);
     }
     @DeleteMapping("/employees/{id}")
     void deleteEmployee(@PathVariable int id){
         employeeService.deleteById(id);
     }
     @GetMapping("/employees/{id}")
-    Employee getEmployeeById(@PathVariable int id){
+    EmployeeResponseDTO getEmployeeById(@PathVariable int id){
         return employeeService.findById(id);
     }
 }
