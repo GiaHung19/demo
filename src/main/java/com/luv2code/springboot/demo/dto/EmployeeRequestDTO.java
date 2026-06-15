@@ -1,8 +1,17 @@
 package com.luv2code.springboot.demo.dto;
+import jakarta.validation.constraints.*;
+
+
 
 public class EmployeeRequestDTO {
+    @NotBlank
+    @Size(min=2,max=50)
     private String firstName;
+    @NotBlank
+    @Size(min=2,max=50)
     private String lastName;
+    @NotBlank
+    @Email
     private String email;
 
     public EmployeeRequestDTO(String firstName,String lastName,String email){

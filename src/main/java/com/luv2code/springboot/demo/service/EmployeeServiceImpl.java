@@ -31,8 +31,9 @@ public class EmployeeServiceImpl implements EmployeeService{
         return result;
     }
     @Transactional
-    public EmployeeResponseDTO save(EmployeeRequestDTO employeeRequestDTO){
+    public EmployeeResponseDTO save(int id,EmployeeRequestDTO employeeRequestDTO){
         Employee employee=new Employee(employeeRequestDTO.getFirstName(),employeeRequestDTO.getLastName(),employeeRequestDTO.getEmail());
+        employee.setId(id);
         Employee result=employeeRepository.save(employee);//return Employee
         return new EmployeeResponseDTO(result.getId(),result.getFirstName(),result.getLastName(),result.getEmail());
     }

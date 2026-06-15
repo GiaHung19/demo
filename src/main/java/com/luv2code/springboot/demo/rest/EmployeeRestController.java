@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.luv2code.springboot.demo.dto.EmployeeRequestDTO;
 import com.luv2code.springboot.demo.dto.EmployeeResponseDTO;
 import com.luv2code.springboot.demo.service.EmployeeService;
+import jakarta.validation.Valid;
 import java.util.*;
 
 @RestController
@@ -26,12 +26,12 @@ public class EmployeeRestController {
         return employeeService.findAll();
     }
     @PostMapping("/employees")
-    EmployeeResponseDTO creatEmployee(@RequestBody EmployeeRequestDTO employeeRequestDTO){
-        return employeeService.save(employeeRequestDTO);
+    EmployeeResponseDTO creatEmployee(@RequestBody @Valid EmployeeRequestDTO employeeRequestDTO){
+        return employeeService.save(0,employeeRequestDTO);
     }
-    @PutMapping("/employees")
-    EmployeeResponseDTO updateEmployee(@RequestBody EmployeeRequestDTO employeeRequestDTO){
-        return employeeService.save(employeeRequestDTO);
+    @PutMapping("/employees/{id}")
+    EmployeeResponseDTO updateEmployee(@PathVariable int id,@RequestBody @Valid EmployeeRequestDTO employeeRequestDTO){
+        return employeeService.save(id,employeeRequestDTO);
     }
     @DeleteMapping("/employees/{id}")
     void deleteEmployee(@PathVariable int id){

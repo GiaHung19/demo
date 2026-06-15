@@ -6,6 +6,6 @@ import com.luv2code.springboot.demo.dto.*;
 public interface EmployeeService {
     List<EmployeeResponseDTO> findAll();
     EmployeeResponseDTO findById(int id);
-    EmployeeResponseDTO save(EmployeeRequestDTO employeeRequestDTO);
+    EmployeeResponseDTO save(int id,EmployeeRequestDTO employeeRequestDTO);
     void deleteById(int id);
 }
