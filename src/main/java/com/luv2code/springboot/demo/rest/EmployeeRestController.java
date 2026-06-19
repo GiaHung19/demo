@@ -11,6 +11,8 @@ import com.luv2code.springboot.demo.dto.EmployeeRequestDTO;
 import com.luv2code.springboot.demo.dto.EmployeeResponseDTO;
 import com.luv2code.springboot.demo.service.EmployeeService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.*;
+
 import java.util.*;
 
 @RestController
@@ -22,11 +24,11 @@ public class EmployeeRestController {
         this.employeeService=employeeService;
     }
     @GetMapping("/employees")
-    List<EmployeeResponseDTO> getEmployees(){
-        return employeeService.findAll();
+    Page<EmployeeResponseDTO> getEmployees(Pageable pageable){
+        return employeeService.findAll(pageable);
     }
     @PostMapping("/employees")
-    EmployeeResponseDTO creatEmployee(@RequestBody @Valid EmployeeRequestDTO employeeRequestDTO){
+    EmployeeResponseDTO createEmployee(@RequestBody @Valid EmployeeRequestDTO employeeRequestDTO){
         return employeeService.save(0,employeeRequestDTO);
     }
     @PutMapping("/employees/{id}")
@@ -41,4 +43,5 @@ public class EmployeeRestController {
     EmployeeResponseDTO getEmployeeById(@PathVariable int id){
         return employeeService.findById(id);
     }
+    
 }
